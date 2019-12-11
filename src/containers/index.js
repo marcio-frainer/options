@@ -2,6 +2,7 @@ import React from "react";
 import Header from "./header";
 import Body from "./body";
 import RightSide from "./rightSide";
+import { AppContext } from "../contexts/AppContext";
 
 const styles = {
   container: {
@@ -9,7 +10,8 @@ const styles = {
     background: "#88839D",
     flexDirection: "column",
     height: "100%",
-    width: "100%"
+    width: "100%",
+    justifyContent: "space-between"
   },
   inner: {
     display: "flex",
@@ -19,8 +21,9 @@ const styles = {
   header: {
     background: "#BEBACD",
     width: "80%",
-    height: "400px",
-    margin: "10px"
+    height: "500px",
+    margin: "10px",
+    padding: "15px"
   },
   body: {
     background: "#BEBACD",
@@ -37,12 +40,14 @@ const styles = {
 
 export default props => {
   return (
-    <div style={styles.container}>
-      <div style={styles.inner}>
-        <Header style={styles.header} />
-        <RightSide style={styles.rightSide} />
+    <AppContext.Provider>
+      <div style={styles.container}>
+        <div style={styles.inner}>
+          <Header style={styles.header} />
+          <RightSide style={styles.rightSide} />
+        </div>
+        <Body style={styles.body} />
       </div>
-      <Body style={styles.body} />
-    </div>
+    </AppContext.Provider>
   );
 };
